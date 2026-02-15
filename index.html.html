@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siempre te querré, Katherin.</title>
+
+<style>
+body{
+    margin:0;
+    background:linear-gradient(135deg,#5c0011,#8b0022);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    font-family:'Georgia',serif;
+    overflow:hidden;
+}
+
+.book{
+    width:85%;
+    max-width:400px;
+    height:75vh;
+    perspective:1500px;
+    position:relative;
+    margin-bottom:80px;
+}
+
+.page{
+    width:100%;
+    height:100%;
+    background:#fff0f5;
+    border:4px solid #8b0022;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.4);
+    position:absolute;
+    top:0;
+    left:0;
+    padding:25px;
+    box-sizing:border-box;
+    overflow-y:auto;
+    transform-origin:left;
+    transition:transform 0.8s ease, opacity 0.8s ease;
+    backface-visibility:hidden;
+}
+
+.page:not(.active){
+    transform:rotateY(-180deg);
+    opacity:0;
+    pointer-events:none;
+}
+
+.page.active{
+    transform:rotateY(0deg);
+    opacity:1;
+    z-index:2;
+}
+
+/* Hello Kitty */
+.kitty-top-right{
+    position:absolute;
+    top:8px;
+    right:8px;
+    width:60px;
+}
+
+.kitty-bottom-left{
+    position:absolute;
+    bottom:8px;
+    left:8px;
+    width:60px;
+}
+
+/* Portada */
+.photo-frame{
+    width:100%;
+    height:260px;
+    border-radius:15px;
+    overflow:hidden;
+    margin-top:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+.photo-frame img{
+    width:100%;
+    height:100%;
+}
+
+/* Texto animado */
+.page-content p,
+.page-content h1,
+.page-content h2,
+.page-content h3{
+    opacity:0;
+    transform:translateY(20px);
+    transition:all 0.6s ease;
+}
+
+.show{
+    opacity:1 !important;
+    transform:translateY(0px) !important;
+}
+
+p{
+    font-size:15px;
+    line-height:1.6;
+    color:#4a0010;
+}
+
+h1,h2,h3{
+    color:#8b0022;
+    text-align:center;
+}
+
+.progress{
+    position:absolute;
+    bottom:10px;
+    right:15px;
+    font-size:12px;
+    color:#8b0022;
+}
+
+.bottom-btn{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    padding:14px 35px;
+    background:#c2185b;
+    color:white;
+    border:none;
+    border-radius:30px;
+    font-size:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    z-index:10;
+}
+
+/* Corazones */
+.floating-heart{
+    position:fixed;
+    bottom:0;
+    font-size:20px;
+    animation:floatUp 3s linear forwards;
+    opacity:0.8;
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(0);opacity:0.8;}
+    100%{transform:translateY(-300px);opacity:0;}
+}
+
+/* Modal */
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:100;
+    display:none;
+}
+
+.heart-modal{
+    width:260px;
+    height:230px;
+    background:#ff4d6d;
+    position:relative;
+    transform:rotate(-45deg);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.heart-modal::before,
+.heart-modal::after{
+    content:"";
+    width:260px;
+    height:230px;
+    background:#ff4d6d;
+    border-radius:50%;
+    position:absolute;
+}
+
+.heart-modal::before{ top:-130px; left:0; }
+.heart-modal::after{ left:130px; top:0; }
+
+.heart-text{
+    transform:rotate(45deg);
+    z-index:2;
+}
+</style>
+</head>
+
+<body>
+
+<div class="book">
+
+<div class="page active" id="p1">
+
+<img src="HELLOKITTY.png" class="kitty-top-right">
+<img src="HELLOKITTY.png" class="kitty-bottom-left">
+
+<div class="page-content">
+<h1>Mi Libro Para Ti 💗</h1>
+<h2>Para mi amor, Katherin</h2>
+
+<div class="photo-frame">
+<img src="portada.jpeg">
+</div>
+
+</div>
+</div>
+
+<!-- demás páginas iguales que antes -->
+<div class="page" id="p2"><div class="page-content">
+<img src="HELLOKITTY.png" class="kitty-top-right">
+
+    <h2>Mi regalo:</h2>
+
+<p>
+Este es katherin, mi más sincero y profundo regalo dedicado para ti, en este día de san Valentín. </p>
+<p>
+    <p>
+Este librito cuenta con 4 preciados capitulos: </p>
+<p class="no-centrado">
+- Capitulo 1: “1 de Enero” <br>
+- Capítulo 2: “Gracias” <br>
+- Capítulo 3: “🌹” <br>
+- Capítulo Final: “siempre, Siempre.”<br><br> </p>
+<p>
+Para ver todo el texto puedes bajar deslizando con el dedo en la pantalla, cuando finalices cada punto, puedes continuar dando click en el botón de siguiente.
+<br>
+Katherin Laurelis Rodríguez Méndez, esto va dedicado hacia ti mi amor. 💗
+</p>
+
+</div></div>
+
+<div class="page" id="p3"><div class="page-content">
+
+<img src="HELLOKITTY.png" class="kitty-top-right">
+
+    
+    <h2>1 de Enero</h2>
+
+
+    <p>
+¿Sabes? Lo más difícil de escribir sobre lo que sientes, es como empezar, de verdad, no se cómo empezar, y es Irónico porque tengo tantas cosas que decirte que ni siquiera se pueden resumir en este libro, así que quiero que sepas que lo que verás en este libro, solo es una parte de lo tanto que quiero decirte, de lo tanto que te quiero. <br>
+<br>
+Digamos que soy alguien con muchos defectos, al igual que todas las personas, supongo, pero trato de ser mejor, trato de querer bien a las personas que me permiten quererlas, me alegro del poder estar para las personas que quiero, para mi familia, para mi mamá, para ti.
+<br>
+<br>
+Realmente me sorprende como en un mes me he encaprichado tanto contigo, como te quiero tanto, como me haces sentir, lo tanto que te pienso, me sorprende, porque quien diría que de verdad quiero un futuro contigo, sé que somos jóvenes los dos, pero, no tenemos que tener 50 años para por fin saber lo que queremos, a quien amar, no tenemos que tener 5 años de relación para poder asegurar que quiero estar contigo. 
+<br>
+<br>
+Me sorprende lo tanto que te amo, me sorprende como todo esto, todo este amor, todo este regalo, como nuestra relación empezó de un día para otro, sin saber incluso nuestros nombres completos, porque no es como empiece, es como termine, no, no. Es como nos amemos mientras estemos, y quiero que dure hasta que muera. Por eso me sorprende katherin, porque es increible como todo esto empezó, un 1 de enero. 
+</p>
+
+</div></div>
+
+<div class="page" id="p4"><div class="page-content">
+
+<img src="HELLOKITTY.png" class="kitty-top-right">
+
+
+    <h2>Gracias</h2>
+
+    <p>
+Quiero aprovechar este espacio para expresarme contigo desde lo más profundo de mi corazón, aunque sé que sabes lo mucho que te quiero, lo muchísimo que lo hago. 
+<br>
+<br>
+Katherin, gracias, gracias por todo lo que me has dado. Tu amor, tu tiempo, por todo, de verdad. <br>
+En estas palabras que te estoy diciendo, estoy reflejando lo que dice mi corazón, y que siempre, siempre quiero que sepas que te amo, con todo mi ser, me siento un poco vulnerable el estar reflejando mis sentimientos así, pero no me importa, solo digo lo que siento, y es eso, que te quiero, que te pienso muchísimo, que me he visualizado contigo en un futuro, el futuro que quiero. <br><br>
+Gracias por tratarme bien, gracias por escucharme, gracias por estar ahí para mí, gracias por elegirme, gracias por compartir conmigo, gracias por quererme, gracias por ser tú, por los buenos días de las mañanas, por las buenas noches, por cada mensaje, por cada segundo que me otorgas, gracias por la confianza, gracias por brindarme tanto tu cuerpo como tu Corazón, el cual prometo cuidar, siempre. 
+
+<br><br>Siento a veces, que no soy lo que mereces, pero no voy a menospreciar a mi persona preguntando que por qué, que por qué yo, solo disfrutaré el estar contigo, el poder tenerte, así que, de verdad, gracias por amarme. Te juro por mi alma que yo te amo con mi vida, que no se te quede ni un pelito de duda, nunca. <br><br>
+Desde los más profundo de mi corazón, de mi alma, de mi ser. Gracias.
+</p>
+
+</div></div>
+
+<div class="page" id="p5"><div class="page-content">
+
+<img src="HELLOKITTY.png" class="kitty-top-right">
+
+
+    <h2>🌹</h2><p>He estado pensado en ti como una de las cosas más bonitas de este mundo; una rosa 🌹. <br>
+<br>Un objeto hermoso, que representa muchas cosas desde el punto de vista de cada persona, muchos las ven raras, otros las ven hermosas, o sensibles, dolorosas, por sus espinas, tristes, si se ven decaidas, perfectas, cuando tienen rasgos unicos.<br> <br>
+     La mayoría de las rosas crecen con defectos, y eso las hace más bonitas en mi opinión, donde muchos ven irregularidades, otros ven la verdadera perfección, donde tu ves imperfecciones sobre tu cuerpo u sobre tu forma de ser, yo veo una belleza de persona, yo veo algo unico, y el solo hecho de pensar que esa belleza, que tù, estàs conmigo, me hace ser el mas feliz.
+     <br><br> Tu mi amor, al igual que las rosas eres delicada, sensible, bonita, preciosa… Y eso eres tú para mi, mi rosa 🌹. Te amo katherin.</p>
+
+</div></div>
+
+<div class="page" id="p6"><div class="page-content">
+
+<img src="HELLOKITTY.png" class="kitty-top-right">
+
+
+    <h2>siempre. Siempre.💕</h2>
+<p> Kathrin Lurelis Rodriguez Mendez. Mi amor, mi vida. <br>
+<br>Gracias por confiarme tu corazón, por abrir tu GRAN y perfecto corazón hacia mí, demostrarme lo tanto que me quieres, lo aprecio con mi alma. Aprovecho aquí, para también contarte algunos de mis miedos, que son; no poder darle a mami una vida que se merece. <br>No poder convertirme en una persona que los demás admiren o, no poder hacer nada en mi vida. <br> Creo que tengo una mente que hará muchas cosas, lo siento en mi ser, y sé que ir haciendo lo que me guste, lo que me llame, lo que siento que debo hacer, con eso ya estaré marcando la persona a la que aspiro ser. 
+<br><br>
+Te preguntaràs que a qué viene el yo contarte mis miedos en algo de amor. Pues, esto lo digo porque hay un miedo en específico que se ha convertido en lo que menos quiero, y ese es el miedo de no poder hacer una vida contigo, el miedo de perderte. <br> <br>
+     No solo por miedo a que te canses de mí, o te enamores de alguien más, lo digo porque somos jóvenes, y no sabemos que nos deparará la vida, no sè para dónde irás a estudiar. ¿Y si te alejas de mí, aunque no quieras? ¿Y si te obligan a dejarme? Esto es lo que más me aterra. 
+<br><br>
+     Por eso quiero pedirte que ames, aprendas, te esfuerces, porque quiero verte feliz, logrando cosas, que te gusten cosas, por eso mis ganas de querer ayudarte, aunque se muy claro que no soy Dios, no soy un ángel, no soy psicólogo, pero te amo, y quiero que disfrutes este regalo tan maravilloso llamado vida, para que seas feliz estando o no estando conmigo. 
+Te lo dice alguien que se cuestiona cada noche si estoy haciendo las cosas bien, si de verdad podrè ayudar a los que me ayudaron a mí. Mi amor, ambos tenemos nuestros problemas, no minimices los tuyos. <br><br>
+
+De verdad me siento muy mal al notar lo tanto que sobrepiensas, en sucesos que no te han favorecido, como has pasado por cosas tan fuertes, como has aguantado tantas cosas, por eso mi insistencia en que me cuentes, pero, también he entendido que, al fin y al cabo, hay cosas que aunque quieras, simplemente no puedes contarme, porque yo también tengo cosas así de fuertes. Te comprendo katherin. No debo forzarte a contarme tus miedos y experiencias malas. Solo ten en mente que tienes a alguien dispuesto a escucharte. Solo eso.
+<br><br>
+
+Te juro katherin que cambiarè cada día para poder verte lo mas feliz conmigo, y lo mas feliz sin estarlo. Lamento lo malo que te he hecho pasar, perdòname. Quiero que sepas también, que por más bonito que veas esto, yo no soy un santo, he hecho cosas malísimas, y seguramente, seguiré haciendo cosas malas, porque somos humanos, nos equivocamos, pero donde debemos marcar quienes somos, es si al final de una caída podemos levantarnos, y eso es lo que hago y quiero que hagas, mañana tal vez cometas un error, no te culpes por eso, intenta que el otro día sea mejor. Eso, hace la diferencia.
+</p>
+<p>
+    
+<br><br>
+Gracias por estar.<br>
+Gracias por confiar.<br>
+Gracias por ser parte de mi historia.<br>
+Te quiero mi vida. Mi amor. Mi rosa.<br>
+Y siempre lo haré, Siempre.
+</p>
+<h3>Con amor 💗<br>— Carlos</h3></div></div>
+
+<div class="progress" id="progress">1 / 5</div>
+</div>
+
+<button class="bottom-btn" onclick="nextPage()" id="mainBtn">Siguiente ➜</button>
+
+<div class="overlay" id="overlay" onclick="closeExperience()">
+<div class="heart-modal">
+<div class="heart-text">
+💖 Feliz Día de<br>San Valentín 💖
+</div>
+</div>
+</div>
+
+<script>
+let current = 1;
+const total = 6;
+const btn = document.getElementById("mainBtn");
+
+function nextPage(){
+    if(current < total){
+        document.getElementById("p"+current).classList.remove("active");
+        current++;
+        document.getElementById("p"+current).classList.add("active");
+        document.getElementById("progress").innerText = current + " / " + total;
+
+        if(current === total){
+            btn.innerText = "Finalizar 💕";
+        }
+
+        createHearts();
+        showText(current);
+    } else {
+        document.getElementById("overlay").style.display = "flex";
+    }
+}
+
+function showText(pageNumber){
+    document.querySelectorAll("#p"+pageNumber+" p, #p"+pageNumber+" h1, #p"+pageNumber+" h2, #p"+pageNumber+" h3")
+    .forEach((el,i)=>{
+        setTimeout(()=>{ el.classList.add("show"); }, i*200);
+    });
+}
+
+function createHearts(){
+    for(let i=0;i<6;i++){
+        const heart=document.createElement("div");
+        heart.classList.add("floating-heart");
+        heart.innerHTML="💗";
+        heart.style.left=Math.random()*100+"%";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),3000);
+    }
+}
+
+function closeExperience(){
+    document.getElementById("overlay").style.display="none";
+}
+
+window.onload=()=>{showText(1);}
+</script>
+
+</body>
+</html>
